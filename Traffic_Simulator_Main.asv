@@ -1,0 +1,26 @@
+clear all; clc; close all;
+
+numCars = 1;
+
+global highway
+laneLength = 500;
+numLanes = 1;
+
+highway = Highway(numLanes, 50, laneLength);
+
+figure()
+axis([-3.7, (numLanes + 1) * 3.7 + 3.7, -20, 20 + laneLength]);
+ax1 = gca;
+set(gca, 'Position', [0.5, 0.1, 0.4, 0.8]);
+% axis equal
+
+% for i = 1:numCars
+%     highway.introduce();
+% end
+dt = .1;
+
+while 1
+    highway.update(dt);
+    drawnow
+    
+end
